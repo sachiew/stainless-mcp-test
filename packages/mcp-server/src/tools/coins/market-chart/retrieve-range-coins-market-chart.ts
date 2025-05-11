@@ -2,7 +2,7 @@
 
 import { Tool } from '@modelcontextprotocol/sdk/types.js';
 import type { Metadata } from '../../';
-import SaTest from 'sa-test';
+import SaTest from 'sa-test-1';
 
 export const metadata: Metadata = {
   resource: 'coins.market_chart',

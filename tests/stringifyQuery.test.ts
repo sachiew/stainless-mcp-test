@@ -1,6 +1,6 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import { SaTest } from 'sa-test';
+import { SaTest } from 'sa-test-1';
 
 const { stringifyQuery } = SaTest.prototype as any;
 

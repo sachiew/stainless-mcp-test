@@ -4,7 +4,7 @@ import { Server } from '@modelcontextprotocol/sdk/server/index.js';
 import { McpServer } from '@modelcontextprotocol/sdk/server/mcp.js';
 import { Endpoint, endpoints, HandlerFunction, query } from './tools';
 import { CallToolRequestSchema, ListToolsRequestSchema, Tool } from '@modelcontextprotocol/sdk/types.js';
-import SaTest from 'sa-test';
+import SaTest from 'sa-test-1';
 import {
   applyCompatibilityTransformations,
   ClientCapabilities,
@@ -18,8 +18,8 @@ export { endpoints } from './tools';
 // Create server instance
 export const server = new McpServer(
   {
-    name: 'sa_test_api',
-    version: '0.0.1-alpha.0',
+    name: 'sa_test_1_api',
+    version: '0.0.1-alpha.1',
   },
   {
     capabilities: {

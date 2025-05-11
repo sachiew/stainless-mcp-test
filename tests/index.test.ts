@@ -1,10 +1,10 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import { APIPromise } from 'sa-test/core/api-promise';
+import { APIPromise } from 'sa-test-1/core/api-promise';
 
 import util from 'node:util';
-import SaTest from 'sa-test';
-import { APIUserAbortError } from 'sa-test';
+import SaTest from 'sa-test-1';
+import { APIUserAbortError } from 'sa-test-1';
 const defaultFetch = fetch;
 
 describe('instantiate client', () => {

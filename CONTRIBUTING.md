@@ -42,25 +42,25 @@ If you’d like to use the repository from source, you can either install from g
 To install via git:
 
 ```sh
-$ npm install git+ssh://git@github.com:stainless-sdks/sa-test-typescript.git
+$ npm install git+ssh://git@github.com:sachiew/stainless-may-11-2025.git
 ```
 
 Alternatively, to link a local copy of the repo:
 
 ```sh
 # Clone
-$ git clone https://www.github.com/stainless-sdks/sa-test-typescript
-$ cd sa-test-typescript
+$ git clone https://www.github.com/sachiew/stainless-may-11-2025
+$ cd stainless-may-11-2025
 
 # With yarn
 $ yarn link
 $ cd ../my-package
-$ yarn link sa-test
+$ yarn link sa-test-1
 
 # With pnpm
 $ pnpm link --global
 $ cd ../my-package
-$ pnpm link -—global sa-test
+$ pnpm link -—global sa-test-1
 ```
 
 ## Running tests
@@ -91,3 +91,17 @@ To format and fix all lint issues automatically:
 ```sh
 $ yarn fix
 ```
+
+## Publishing and releases
+
+Changes made to this repository via the automated release PR pipeline should publish to npm automatically. If
+the changes aren't made through the automated pipeline, you may want to make releases manually.
+
+### Publish with a GitHub workflow
+
+You can release to package managers by using [the `Publish NPM` GitHub action](https://www.github.com/sachiew/stainless-may-11-2025/actions/workflows/publish-npm.yml). This requires a setup organization or repository secret to be set up.
+
+### Publish manually
+
+If you need to manually release a package, you can run the `bin/publish-npm` script with an `NPM_TOKEN` set on
+the environment.
