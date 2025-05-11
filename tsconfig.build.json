@@ -5,8 +5,8 @@
   "compilerOptions": {
     "rootDir": "./dist/src",
     "paths": {
-      "sa-test/*": ["dist/src/*"],
-      "sa-test": ["dist/src/index.ts"]
+      "sa-test-1/*": ["dist/src/*"],
+      "sa-test-1": ["dist/src/index.ts"]
     },
     "noEmit": false,
     "declaration": true,

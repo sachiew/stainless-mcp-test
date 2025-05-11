@@ -1,5 +1,5 @@
-import { multipartFormRequestOptions, createForm } from 'sa-test/internal/uploads';
-import { toFile } from 'sa-test/core/uploads';
+import { multipartFormRequestOptions, createForm } from 'sa-test-1/internal/uploads';
+import { toFile } from 'sa-test-1/core/uploads';
 
 describe('form data validation', () => {
   test('valid values do not error', async () => {

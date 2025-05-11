@@ -1,5 +1,5 @@
 {
-  "name": "sa-test",
+  "name": "sa-test-1",
   "version": "0.0.1-alpha.0",
   "description": "The official TypeScript library for the Sa Test API",
   "author": "Sa Test <>",
@@ -50,8 +50,8 @@
     "synckit": "0.8.8"
   },
   "imports": {
-    "sa-test": ".",
-    "sa-test/*": "./src/*"
+    "sa-test-1": ".",
+    "sa-test-1/*": "./src/*"
   },
   "exports": {
     ".": {
