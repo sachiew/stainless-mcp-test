@@ -25,7 +25,7 @@ export default tseslint.config(
         {
           patterns: [
             {
-              regex: '^sa-test(/.*)?',
+              regex: '^sa-test-1(/.*)?',
               message: 'Use a relative import, not a package import.',
             },
           ],

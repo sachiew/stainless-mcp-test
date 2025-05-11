@@ -9,8 +9,8 @@
     "esModuleInterop": true,
     "baseUrl": "./",
     "paths": {
-      "sa-test/*": ["src/*"],
-      "sa-test": ["src/index.ts"]
+      "sa-test-1/*": ["src/*"],
+      "sa-test-1": ["src/index.ts"]
     },
     "noEmit": true,
 

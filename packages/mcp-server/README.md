@@ -4,31 +4,16 @@ It is generated with [Stainless](https://www.stainless.com/).
 
 ## Installation
 
-### Building
+### Direct invocation
 
-Because it's not published yet, clone the repo and build it:
-
-```sh
-git clone git@github.com:sachiew/stainless-may-11-2025.git
-cd stainless-may-11-2025
-./scripts/bootstrap
-./scripts/build
-```
-
-### Running
+You can run the MCP Server directly via `npx`:
 
 ```sh
-# set env vars as needed
 export SA_TEST_API_KEY="My API Key"
-node ./packages/mcp-server/dist/index.js
+npx -y sa-test-mcp@latest
 ```
-
-> [!NOTE]
-> Once this package is [published to npm](https://app.stainless.com/docs/guides/publish), this will become: `npx -y sa-test-mcp`
 
 ### Via MCP Client
-
-[Build the project](#building) as mentioned above.
 
 There is a partial list of existing clients at [modelcontextprotocol.io](https://modelcontextprotocol.io/clients). If you already
 have a client, consult their documentation to install the MCP server.
@@ -38,13 +23,9 @@ For clients with a configuration JSON, it might look something like this:
 ```json
 {
   "mcpServers": {
-    "sa_test_api": {
-      "command": "node",
-      "args": [
-        "/path/to/local/stainless-may-11-2025/packages/mcp-server",
-        "--client=claude",
-        "--tools=dynamic"
-      ],
+    "sa_test_1_api": {
+      "command": "npx",
+      "args": ["-y", "sa-test-mcp", "--client=claude", "--tools=dynamic"],
       "env": {
         "SA_TEST_API_KEY": "My API Key"
       }

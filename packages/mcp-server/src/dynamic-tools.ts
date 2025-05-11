@@ -1,4 +1,4 @@
-import SaTest from 'sa-test';
+import SaTest from 'sa-test-1';
 import { Endpoint } from './tools';
 import { zodToJsonSchema } from 'zod-to-json-schema';
 import { z } from 'zod';
