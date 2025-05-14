@@ -9,8 +9,8 @@
     "esModuleInterop": true,
     "baseUrl": "./",
     "paths": {
-      "sa-test-mcp/*": ["src/*"],
-      "sa-test-mcp": ["src/index.ts"]
+      "sa-test-1-mcp/*": ["src/*"],
+      "sa-test-1-mcp": ["src/index.ts"]
     },
     "noEmit": true,
 

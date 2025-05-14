@@ -1,6 +1,6 @@
 {
   "name": "sa-test-1",
-  "version": "0.0.1-alpha.1",
+  "version": "0.0.1-alpha.2",
   "description": "The official TypeScript library for the Sa Test API",
   "author": "Sa Test <>",
   "types": "dist/index.d.ts",
@@ -68,8 +68,5 @@
       "import": "./dist/*.mjs",
       "require": "./dist/*.js"
     }
-  },
-  "engines": {
-    "node": ">= 20"
   }
 }

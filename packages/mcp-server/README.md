@@ -10,7 +10,7 @@ You can run the MCP Server directly via `npx`:
 
 ```sh
 export SA_TEST_API_KEY="My API Key"
-npx -y sa-test-mcp@latest
+npx -y sa-test-1-mcp@latest
 ```
 
 ### Via MCP Client
@@ -25,7 +25,7 @@ For clients with a configuration JSON, it might look something like this:
   "mcpServers": {
     "sa_test_1_api": {
       "command": "npx",
-      "args": ["-y", "sa-test-mcp", "--client=claude", "--tools=dynamic"],
+      "args": ["-y", "sa-test-1-mcp", "--client=claude", "--tools=dynamic"],
       "env": {
         "SA_TEST_API_KEY": "My API Key"
       }
@@ -130,10 +130,10 @@ over time, you can manually enable or disable certain capabilities:
 
 ```js
 // Import the server, generated endpoints, or the init function
-import { server, endpoints, init } from "sa-test-mcp/server";
+import { server, endpoints, init } from "sa-test-1-mcp/server";
 
 // import a specific tool
-import checkStatusPing from "sa-test-mcp/tools/ping/check-status-ping";
+import checkStatusPing from "sa-test-1-mcp/tools/ping/check-status-ping";
 
 // initialize the server and all endpoints
 init({ server, endpoints });
