@@ -26,13 +26,9 @@ const client = new SaTest({
   apiKey: process.env['SA_TEST_API_KEY'], // This is the default and can be omitted
 });
 
-async function main() {
-  const response = await client.ping.checkStatus();
+const response = await client.ping.checkStatus();
 
-  console.log(response.gecko_says);
-}
-
-main();
+console.log(response.gecko_says);
 ```
 
 ### Request & Response types
@@ -47,11 +43,7 @@ const client = new SaTest({
   apiKey: process.env['SA_TEST_API_KEY'], // This is the default and can be omitted
 });
 
-async function main() {
-  const response: SaTest.PingCheckStatusResponse = await client.ping.checkStatus();
-}
-
-main();
+const response: SaTest.PingCheckStatusResponse = await client.ping.checkStatus();
 ```
 
 Documentation for each method, request param, and response field are available in docstrings and will appear on hover in most modern editors.
@@ -64,19 +56,15 @@ a subclass of `APIError` will be thrown:
 
 <!-- prettier-ignore -->
 ```ts
-async function main() {
-  const response = await client.ping.checkStatus().catch(async (err) => {
-    if (err instanceof SaTest.APIError) {
-      console.log(err.status); // 400
-      console.log(err.name); // BadRequestError
-      console.log(err.headers); // {server: 'nginx', ...}
-    } else {
-      throw err;
-    }
-  });
-}
-
-main();
+const response = await client.ping.checkStatus().catch(async (err) => {
+  if (err instanceof SaTest.APIError) {
+    console.log(err.status); // 400
+    console.log(err.name); // BadRequestError
+    console.log(err.headers); // {server: 'nginx', ...}
+  } else {
+    throw err;
+  }
+});
 ```
 
 Error codes are as follows:
