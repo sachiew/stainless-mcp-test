@@ -1,7 +1,8 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import SaTest from 'sa-test-1';
-import { Tool } from '@modelcontextprotocol/sdk/types.js';
+import { Metadata, Endpoint, HandlerFunction } from './types';
+
+export { Metadata, Endpoint, HandlerFunction };
 
 import check_status_ping from './ping/check-status-ping';
 import get_price_simple from './simple/get-price-simple';
@@ -39,24 +40,6 @@ import trending_search from './search/trending-search';
 import retrieve_global from './global/retrieve-global';
 import retrieve_decentralized_finance_global from './global/retrieve-decentralized-finance-global';
 import retrieve_public_treasury_companies from './companies/retrieve-public-treasury-companies';
-
-export type HandlerFunction = (client: SaTest, args: Record<string, unknown> | undefined) => Promise<any>;
-
-export type Metadata = {
-  resource: string;
-  operation: 'read' | 'write';
-  tags: string[];
-
-  httpMethod?: string;
-  httpPath?: string;
-  operationId?: string;
-};
-
-export type Endpoint = {
-  metadata: Metadata;
-  tool: Tool;
-  handler: HandlerFunction;
-};
 
 export const endpoints: Endpoint[] = [];
 

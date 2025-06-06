@@ -1,5 +1,7 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
+import { asTextContentResult } from 'sa-test-1-mcp/tools/types';
+
 import { Tool } from '@modelcontextprotocol/sdk/types.js';
 import type { Metadata } from '../../';
 import SaTest from 'sa-test-1';
@@ -66,9 +68,9 @@ export const tool: Tool = {
   },
 };
 
-export const handler = (client: SaTest, args: Record<string, unknown> | undefined) => {
+export const handler = async (client: SaTest, args: Record<string, unknown> | undefined) => {
   const { id, ...body } = args as any;
-  return client.coins.marketChart.retrieveRange(id, body);
+  return asTextContentResult(await client.coins.marketChart.retrieveRange(id, body));
 };
 
 export default { metadata, tool, handler };
