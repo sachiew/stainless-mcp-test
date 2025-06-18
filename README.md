@@ -1,6 +1,6 @@
 # Sa Test TypeScript API Library
 
-[![NPM version](https://img.shields.io/npm/v/sa-test-1.svg)](https://npmjs.org/package/sa-test-1) ![npm bundle size](https://img.shields.io/bundlephobia/minzip/sa-test-1)
+[![NPM version](<https://img.shields.io/npm/v/sa-test-1.svg?label=npm%20(stable)>)](https://npmjs.org/package/sa-test-1) ![npm bundle size](https://img.shields.io/bundlephobia/minzip/sa-test-1)
 
 This library provides convenient access to the Sa Test REST API from server-side TypeScript or JavaScript.
 
