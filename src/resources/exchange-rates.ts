@@ -19,7 +19,7 @@ export class ExchangeRates extends APIResource {
 }
 
 export interface ExchangeRateListResponse {
-  rates?: Record<string, ExchangeRateListResponse.Rates>;
+  rates?: { [key: string]: ExchangeRateListResponse.Rates };
 }
 
 export namespace ExchangeRateListResponse {

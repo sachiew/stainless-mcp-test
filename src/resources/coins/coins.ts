@@ -181,12 +181,12 @@ export interface CoinsDataBase {
   /**
    * coin description
    */
-  description?: Record<string, string>;
+  description?: { [key: string]: string };
 
   /**
    * detailed coin asset platform and contract address
    */
-  detail_platforms?: Record<string, string>;
+  detail_platforms?: { [key: string]: string };
 
   /**
    * coin developer data
@@ -221,7 +221,7 @@ export interface CoinsDataBase {
   /**
    * coin name localization
    */
-  localization?: Record<string, string>;
+  localization?: { [key: string]: string };
 
   /**
    * coin rank by market cap
@@ -241,7 +241,7 @@ export interface CoinsDataBase {
   /**
    * coin asset platform and contract address
    */
-  platforms?: Record<string, string>;
+  platforms?: { [key: string]: string };
 
   /**
    * preview listing coin
@@ -1267,7 +1267,7 @@ export namespace CoinListResponse {
     /**
      * coin asset platform and contract address
      */
-    platforms?: Record<string, string>;
+    platforms?: { [key: string]: string };
 
     /**
      * coin symbol
@@ -1448,7 +1448,7 @@ export interface CoinRetrieveHistoryResponse {
   /**
    * coin localization
    */
-  localization?: Record<string, string>;
+  localization?: { [key: string]: string };
 
   /**
    * coin market data
