@@ -1,5 +1,6 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
+import { maybeFilter } from 'sa-test-1-mcp/filtering';
 import { asTextContentResult } from 'sa-test-1-mcp/tools/types';
 
 import { Tool } from '@modelcontextprotocol/sdk/types.js';
@@ -18,7 +19,7 @@ export const metadata: Metadata = {
 export const tool: Tool = {
   name: 'list_with_market_data_coins_categories',
   description:
-    'This endpoint allows you to **query all the coins categories with market data (market cap, volume, ...) on CoinGecko**',
+    "When using this tool, always use the `jq_filter` parameter to reduce the response size and improve performance.\n\nOnly omit if you're sure you don't need the data.\n\nThis endpoint allows you to **query all the coins categories with market data (market cap, volume, ...) on CoinGecko**\n\n# Response Schema\n```json\n{\n  type: 'object',\n  properties: {\n    id: {\n      type: 'string',\n      description: 'category ID'\n    },\n    content: {\n      type: 'string',\n      description: 'category description'\n    },\n    market_cap: {\n      type: 'number',\n      description: 'category market cap'\n    },\n    market_cap_change_24h: {\n      type: 'number',\n      description: 'category market cap change in 24 hours'\n    },\n    name: {\n      type: 'string',\n      description: 'category name'\n    },\n    top_3_coins: {\n      type: 'array',\n      description: 'images of top 3 coins in the category',\n      items: {\n        type: 'string'\n      }\n    },\n    top_3_coins_id: {\n      type: 'array',\n      description: 'IDs of top 3 coins in the category',\n      items: {\n        type: 'string'\n      }\n    },\n    updated_at: {\n      type: 'string',\n      description: 'category last updated time'\n    },\n    volume_24h: {\n      type: 'number',\n      description: 'category volume in 24 hours'\n    }\n  },\n  required: []\n}\n```",
   inputSchema: {
     type: 'object',
     properties: {
@@ -34,13 +35,19 @@ export const tool: Tool = {
           'market_cap_change_24h_asc',
         ],
       },
+      jq_filter: {
+        type: 'string',
+        title: 'jq Filter',
+        description:
+          'A jq filter to apply to the response to include certain fields. Consult the output schema in the tool description to see the fields that are available.\n\nFor example: to include only the `name` field in every object of a results array, you can provide ".results[].name".\n\nFor more information, see the [jq documentation](https://jqlang.org/manual/).',
+      },
     },
   },
 };
 
 export const handler = async (client: SaTest, args: Record<string, unknown> | undefined) => {
   const body = args as any;
-  return asTextContentResult(await client.coins.categories.listWithMarketData(body));
+  return asTextContentResult(await maybeFilter(args, await client.coins.categories.listWithMarketData(body)));
 };
 
 export default { metadata, tool, handler };
