@@ -1,5 +1,6 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
+import { maybeFilter } from 'sa-test-1-mcp/filtering';
 import { asTextContentResult } from 'sa-test-1-mcp/tools/types';
 
 import { Tool } from '@modelcontextprotocol/sdk/types.js';
@@ -18,7 +19,7 @@ export const metadata: Metadata = {
 export const tool: Tool = {
   name: 'retrieve_tickers_coins',
   description:
-    'This endpoint allows you to **query the coin tickers on both centralized exchange (CEX) and decentralized exchange (DEX) based on a particular coin ID**',
+    "When using this tool, always use the `jq_filter` parameter to reduce the response size and improve performance.\n\nOnly omit if you're sure you don't need the data.\n\nThis endpoint allows you to **query the coin tickers on both centralized exchange (CEX) and decentralized exchange (DEX) based on a particular coin ID**\n\n# Response Schema\n```json\n{\n  $ref: '#/$defs/coins_tickers',\n  $defs: {\n    coins_tickers: {\n      type: 'object',\n      properties: {\n        name: {\n          type: 'string',\n          description: 'coin name'\n        },\n        tickers: {\n          type: 'array',\n          description: 'list of tickers',\n          items: {\n            type: 'object',\n            properties: {\n              base: {\n                type: 'string',\n                description: 'coin ticker base currency'\n              },\n              bid_ask_spread_percentage: {\n                type: 'number',\n                description: 'coin ticker bid ask spread percentage'\n              },\n              coin_id: {\n                type: 'string',\n                description: 'coin ticker base currency coin ID'\n              },\n              converted_last: {\n                type: 'object',\n                description: 'coin ticker converted last price',\n                properties: {\n                  btc: {\n                    type: 'number'\n                  },\n                  eth: {\n                    type: 'number'\n                  },\n                  usd: {\n                    type: 'number'\n                  }\n                },\n                required: []\n              },\n              converted_volume: {\n                type: 'object',\n                description: 'coin ticker converted volume',\n                properties: {\n                  btc: {\n                    type: 'number'\n                  },\n                  eth: {\n                    type: 'number'\n                  },\n                  usd: {\n                    type: 'number'\n                  }\n                },\n                required: []\n              },\n              cost_to_move_down_usd: {\n                type: 'number',\n                description: 'coin ticker cost to move down in usd'\n              },\n              cost_to_move_up_usd: {\n                type: 'number',\n                description: 'coin ticker cost to move up in usd'\n              },\n              is_anomaly: {\n                type: 'boolean',\n                description: 'coin ticker anomaly'\n              },\n              is_stale: {\n                type: 'boolean',\n                description: 'coin ticker stale'\n              },\n              last: {\n                type: 'number',\n                description: 'coin ticker last price'\n              },\n              last_fetch_at: {\n                type: 'string',\n                description: 'coin ticker last fetch timestamp'\n              },\n              last_traded_at: {\n                type: 'string',\n                description: 'coin ticker last traded timestamp'\n              },\n              market: {\n                type: 'object',\n                description: 'coin ticker exchange',\n                properties: {\n                  has_trading_incentive: {\n                    type: 'boolean',\n                    description: 'exchange trading incentive'\n                  },\n                  identifier: {\n                    type: 'string',\n                    description: 'exchange identifier'\n                  },\n                  name: {\n                    type: 'string',\n                    description: 'exchange name'\n                  },\n                  logo: {\n                    type: 'string',\n                    description: 'exchange image url'\n                  }\n                },\n                required: [                  'has_trading_incentive',\n                  'identifier',\n                  'name'\n                ]\n              },\n              target: {\n                type: 'string',\n                description: 'coin ticker target currency'\n              },\n              target_coin_id: {\n                type: 'string',\n                description: 'coin ticker target currency coin ID'\n              },\n              timestamp: {\n                type: 'string',\n                description: 'coin ticker timestamp'\n              },\n              token_info_url: {\n                type: 'string',\n                description: 'coin ticker token info url'\n              },\n              trade_url: {\n                type: 'string',\n                description: 'coin ticker trade url'\n              },\n              trust_score: {\n                type: 'string',\n                description: 'coin ticker trust score'\n              },\n              volume: {\n                type: 'number',\n                description: 'coin ticker volume'\n              }\n            },\n            required: []\n          }\n        }\n      },\n      required: []\n    }\n  }\n}\n```",
   inputSchema: {
     type: 'object',
     properties: {
@@ -47,13 +48,19 @@ export const tool: Tool = {
         type: 'integer',
         description: 'page through results',
       },
+      jq_filter: {
+        type: 'string',
+        title: 'jq Filter',
+        description:
+          'A jq filter to apply to the response to include certain fields. Consult the output schema in the tool description to see the fields that are available.\n\nFor example: to include only the `name` field in every object of a results array, you can provide ".results[].name".\n\nFor more information, see the [jq documentation](https://jqlang.org/manual/).',
+      },
     },
   },
 };
 
 export const handler = async (client: SaTest, args: Record<string, unknown> | undefined) => {
   const { id, ...body } = args as any;
-  return asTextContentResult(await client.coins.retrieveTickers(id, body));
+  return asTextContentResult(await maybeFilter(args, await client.coins.retrieveTickers(id, body)));
 };
 
 export default { metadata, tool, handler };
